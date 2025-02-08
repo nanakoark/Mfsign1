@@ -4,15 +4,15 @@ on:
   schedule:
     # IMPORTANT: Set cron job in UTC timezone
     - cron:  '0 0 * * *'
+env:
+    Account: ${{ secrets.ACCOUNT }}
+    Password: ${{ secrets.PASSWORD }}
+    Feishu_bot_secret: ${{ secrets.FEISHU_BOT_SECRET }}
+    Feishu_webhook: ${{ secrets.FEISHU_WEBHOOK }}
 
 jobs:
   auto_sign:
     runs-on: ubuntu-latest
-    env:
-      Account: ${{ secrets.ACCOUNT }}
-      Password: ${{ secrets.PASSWORD }}
-      Feishu_bot_secret: ${{ secrets.FEISHU_BOT_SECRET }}
-      Feishu_webhook: ${{ secrets.FEISHU_WEBHOOK }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
