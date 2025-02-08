@@ -8,6 +8,11 @@ on:
 jobs:
   auto_sign:
     runs-on: ubuntu-latest
+    env:
+      Account: ${{ secrets.Account }}
+      Password: ${{ secrets.MY_VARIABLE }}
+      Feishu_bot_secret: ${{ secrets.Feishu_bot_secret }}
+      Feishu_webhook: ${{ secrets.Feishu_webhook }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
