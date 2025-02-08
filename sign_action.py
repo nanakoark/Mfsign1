@@ -113,5 +113,7 @@ content = response.content
 decoded = content.decode('utf-8',errors='ignore')
 dict = json.loads(findjson(decoded))
 print(dict['msg'])
-feishu_notice(dict['msg'],feishu_bot_secret,feishu_webhook)
+
+if feishu_bot_secret:
+    feishu_notice(dict['msg'],feishu_bot_secret,feishu_webhook)
 
