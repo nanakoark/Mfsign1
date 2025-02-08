@@ -3,6 +3,7 @@ import datetime
 import hashlib
 import hmac
 import json
+import os
 import time
 import requests
 
@@ -95,12 +96,10 @@ def feishu_notice(msg,bot_secret,webhook):
 
 # 主代码
 # 加载配置
-with open("config.json") as f:
-    config = json.load(f)
-account = config['account']
-password = config['password']
-feishu_bot_secret = config['feishu_bot_secret']
-feishu_webhook = config['feishu_webhook']
+account = os.environ['Account']
+password = os.environ['Password']
+feishu_bot_secret = os.environ['Feishu_bot_secret']
+feishu_webhook = os.environ['Feishu_webhook']
 AccessToken = getAccessToken2(account,password)
 
 #签到
