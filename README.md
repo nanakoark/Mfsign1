@@ -53,11 +53,30 @@ on:
 
 按照以下步骤测试运行
 
-<video src="https://pic-oss.mouup.top/pic/2025/02/0959ce9abb60ce18323cbccaed596adf.mp4" controls="controls" width="500" height="300"></video>
+
 
 ## 添加飞书通知
 
 ![Feishunotice](https://pic-oss.mouup.top/pic/2025/02/dc839114f1c0ee4f7c5be014cebbb807.png)
 
+### 1.
 首先参考[官方文档](https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot?lang=zh-CN#399d949c)
-创建机器人，得到
+创建机器人
+
+记得在`安全设置`中勾选`签名校验`
+
+至此，我们得到了`webhook地址`和`签名校验用的密钥`
+
+### 2.
+再次打开`Setting`→`Secrets and variables`(选择`Action`)
+
+添加`Repository secrets`
+
+依此添加以下`secret`
+
+| name        | secret         |
+|-------------|----------------|
+| `FEISHU_WEBHOOK`   | 刚刚拿到的webhook地址 |
+| `FEISHU_BOT_SECRET`  | 签名校验用的密钥           |
+
+然后以后每次签到成功就会收到飞书的通知了
