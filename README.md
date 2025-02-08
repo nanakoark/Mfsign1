@@ -53,7 +53,9 @@ on:
 
 按照以下步骤测试运行
 
+https://github.com/user-attachments/assets/8b3d0f07-902a-45c5-9078-b8396a1b58bb
 
+<br>
 
 ## 添加飞书通知
 
