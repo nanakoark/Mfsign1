@@ -4,8 +4,9 @@ import hashlib
 import hmac
 import json
 import os
-import time
 import requests
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 
 # 定义函数获取 AccessToken
@@ -59,7 +60,9 @@ def findjson(decoded_content):
 
 # 消息发送
 def feishu_notice(msg,bot_secret,webhook):
-    timestamp = int(time.time())
+    tz = ZoneInfo('Asia/Shanghai')
+    now = datetime.now(tz)
+    timestamp = int(now.timestamp())
     secret = bot_secret
     # 生成认证码
     string_to_sign = '{}\n{}'.format(timestamp, secret)
@@ -81,7 +84,7 @@ def feishu_notice(msg,bot_secret,webhook):
                         'text': f'{msg}\n'
                     },{
                         'tag': 'text',
-                        'text': f'时间：{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}'
+                        'text': f'时间：{now.strftime('%Y-%m-%d %H:%M:%S')}'
                     }]
                     ]
             }
